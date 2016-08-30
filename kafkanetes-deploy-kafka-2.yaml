@@ -75,7 +75,7 @@ objects:
           - --override
           - broker.id=0
           volumeMounts:
-          - mountPath: /tmp/kafka-logs
+          - mountPath: /tmp
             name: kafka-logs
           ports:
           - containerPort: 9092
@@ -122,7 +122,7 @@ objects:
           - --override
           - broker.id=1
           volumeMounts:
-          - mountPath: /tmp/kafka-logs
+          - mountPath: /tmp
             name: kafka-logs
           ports:
           - containerPort: 9092
