@@ -1,3 +1,6 @@
+# 本文引用[ jim-minter/kafkanetes](https://github.com/jim-minter/kafkanetes),对部分内容进行了更改。
+* 1 更新了Dockerfile，替换了原本引用的REHL镜像，解决build失败的问题
+* 2 更新了kafkanetes-deploy-kafka-2.yaml，更改了mount点，我们使用的环境使用heketi管理glusterFS，如果直接在挂载在/tmp/kafka-logs下，hekete管理的glusterFS集群下会默认的在挂载目录创建一个.trashcan目录，kafka会认为这也是个topic日志目录就会冲突。
 # "Kafkanetes"
 
 Run [Apache Kafka](https://kafka.apache.org/) and [Apache ZooKeeper](https://zookeeper.apache.org/) on [OpenShift v3](https://www.openshift.com/).
@@ -17,18 +20,15 @@ Prerequirement: ensure you have persistent storage available in OpenShift.  If n
 
 1. Clone repository
  ```bash
-$ git clone https://github.com/jim-minter/kafkanetes.git
+$ git clone https://github.com/wfw2046/kafka-cluster-on-OpenShift.git
 ```
 
-1. (Optionally) import templates into OpenShift (requires elevated privileges)
-
-   If you follow this step, as an alternative you can use the UI for all subsequent steps.  If you omit this step, in all subsequent steps substitute `$ oc process -f kafkanetes/foo.yaml | oc create -f -` for `$ oc new-app foo`.
-
+1.  import templates into OpenShift 
    ```bash
-$ for i in kafkanetes/*.yaml; do sudo oc create -f $i -n openshift; done
+$ for i in kafka-cluster-on-OpenShift/*.yaml; do sudo oc create -f $i ; done
 ```
 
-1. Build the Kafkanetes image, containing RHEL, Java, Kafka and its distribution of Zookeeper
+1. Build the Kafkanetes image, containing CentOs, Java, Kafka and its distribution of Zookeeper
    ```bash
 $ oc new-app kafkanetes-build
 $ oc logs --follow build/kafkanetes-1
