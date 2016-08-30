@@ -1,7 +1,8 @@
 FROM centos:7
 RUN mkdir -p /opt/kafka \
   && cd /opt/kafka \
-  && yum -y install java-1.8.0-openjdk-headless tar \
+  && yum -y install java-1.8.0-openjdk-headless  \
+  && yum -y install tar \
   && curl -s http://www.mirrorservice.org/sites/ftp.apache.org/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz | tar -xz --strip-components=1 \
   && yum -y remove tar \
   && yum clean all 
