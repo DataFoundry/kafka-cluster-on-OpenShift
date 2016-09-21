@@ -9,5 +9,4 @@ RUN mkdir -p /opt/kafka \
 COPY zookeeper-server-start-multiple.sh /opt/kafka/bin/
 RUN chmod -R a=u /opt/kafka
 WORKDIR /opt/kafka
-VOLUME /tmp/kafka-logs /tmp/zookeeper
 EXPOSE 2181 2888 3888 9092
