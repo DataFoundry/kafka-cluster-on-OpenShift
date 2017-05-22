@@ -1,4 +1,4 @@
-FROM centos:centos7.2
+FROM centos:7.2.1511
 RUN mkdir -p /opt/kafka \
   && cd /opt/kafka \
   && yum -y install java-1.8.0-openjdk-headless  \
