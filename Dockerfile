@@ -1,4 +1,4 @@
-FROM registry.dataos.io/docker_openfalcon/centos:centos7.2.1511
+FROM centos:centos7.2
 RUN mkdir -p /opt/kafka \
   && cd /opt/kafka \
   && yum -y install java-1.8.0-openjdk-headless  \
